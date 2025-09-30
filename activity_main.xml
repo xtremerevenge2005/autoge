@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/main"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/off_white">
+
+        <!-- Abas -->
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Conteúdo das abas -->
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- ABA 1: Veículos -->
+            <FrameLayout
+                android:id="@+id/tab_vehicles"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- 1) Cadastro e lista de veículos -->
+                <LinearLayout
+                    android:id="@+id/section_list"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <!-- Botões de Exportar/Importar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <Button
+                            android:id="@+id/buttonExport"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Exportar Dados"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+
+                        <Button
+                            android:id="@+id/buttonImport"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Importar Dados"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <!-- ALTERAÇÃO: Título adicionado -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="NOVO VEÍCULO"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="@android:color/black"/>
+
+                    <EditText
+                        android:id="@+id/editTextModelo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Modelo"/>
+
+                    <EditText
+                        android:id="@+id/editTextMarca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Marca"
+                        android:layout_marginTop="8dp"/>
+
+                    <EditText
+                        android:id="@+id/editTextAno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ano"
+                        android:inputType="number"
+                        android:layout_marginTop="8dp"/>
+
+                    <EditText
+                        android:id="@+id/editTextInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Informações Adicionais"
+                        android:inputType="textMultiLine"
+                        android:minLines="2"
+                        android:layout_marginTop="8dp"/>
+
+                    <Button
+                        android:id="@+id/buttonSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Cadastrar Veículo"
+                        android:backgroundTint="@color/yellow"
+                        android:textColor="@color/black"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#CCC"
+                        android:layout_marginVertical="16dp"/>
+
+                    <ListView
+                        android:id="@+id/listViewVehicles"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <!-- 2) Detalhe do veículo e registro de trocas -->
+                <ScrollView
+                    android:id="@+id/detail_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- Dados do veículo -->
+                        <TextView
+                            android:id="@+id/tvModeloDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Modelo:"/>
+
+                        <TextView
+                            android:id="@+id/tvMarcaDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Marca:"/>
+
+                        <TextView
+                            android:id="@+id/tvAnoDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Ano:"/>
+
+                        <TextView
+                            android:id="@+id/tvInfoDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Info:"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#CCC"
+                            android:layout_marginVertical="16dp"/>
+
+                        <!-- Imagens do veículo -->
+                        <Button
+                            android:id="@+id/buttonAddVehicleImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Adicionar Imagem do Veículo"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/vehicleImagesLayout"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </HorizontalScrollView>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#CCC"
+                            android:layout_marginVertical="16dp"/>
+
+                        <!-- Formulário de troca -->
+                        <AutoCompleteTextView
+                            android:id="@+id/editTextCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Categoria da Peça"
+                            android:completionThreshold="1"
+                            android:popupBackground="@color/off_white"
+                            android:dropDownSelector="@android:color/transparent"/>
+
+                        <EditText
+                            android:id="@+id/editTextNfNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nº NFS-e"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextPieceName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nome da Peça"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextPieceManufacturer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Fabricante"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextPieceValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Valor da Peça (R$)"
+                            android:inputType="numberDecimal"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextIntervalDays"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Intervalo (dias)"
+                            android:inputType="number"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextChangeDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Data de Troca (dd/mm/aaaa)"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextAlertThreshold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Alertar X dias antes (opcional)"
+                            android:inputType="number"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/editTextPieceInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Informações Adicionais"
+                            android:inputType="textMultiLine"
+                            android:minLines="2"
+                            android:layout_marginTop="8dp"/>
+
+                        <Button
+                            android:id="@+id/buttonSavePart"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Registrar Troca"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:text="Visualização das Peças:"
+                            android:textStyle="bold"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupViewMode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <RadioButton
+                                android:id="@+id/radioChrono"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cronológica"
+                                android:checked="true"/>
+                            <RadioButton
+                                android:id="@+id/radioByPiece"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Por Peça"/>
+                        </RadioGroup>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:text="Trocas por Categoria:"
+                            android:textStyle="bold"/>
+
+                        <ExpandableListView
+                            android:id="@+id/expandableListViewParts"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_marginTop="8dp"
+                            android:nestedScrollingEnabled="true"/>
+
+                        <Button
+                            android:id="@+id/buttonBack"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Voltar"
+                            android:layout_marginTop="24dp"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                </ScrollView>
+
+                <!-- 3) Detalhe da peça + imagens -->
+                <ScrollView
+                    android:id="@+id/part_detail_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvPartName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Nome:"/>
+
+                        <TextView
+                            android:id="@+id/tvPartCategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Categoria:"/>
+
+                        <TextView
+                            android:id="@+id/tvPartNfNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Nº NFS-e:"/>
+
+                        <TextView
+                            android:id="@+id/tvPartManufacturer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Fabricante:"/>
+
+                        <TextView
+                            android:id="@+id/tvPartValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Valor: R$ 0,00"/>
+
+                        <TextView
+                            android:id="@+id/tvPartChangeDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Data de Troca:"/>
+
+                        <TextView
+                            android:id="@+id/tvPartInterval"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Intervalo (dias):"/>
+
+                        <TextView
+                            android:id="@+id/tvPartFutureDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Próxima Troca:"/>
+
+                        <TextView
+                            android:id="@+id/tvPartInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Informações:"/>
+
+                        <Button
+                            android:id="@+id/buttonAddImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Adicionar Imagem"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp">
+
+                            <LinearLayout
+                                android:id="@+id/partImagesLayout"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </HorizontalScrollView>
+
+                        <Button
+                            android:id="@+id/buttonBackPart"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Voltar"
+                            android:layout_marginTop="24dp"
+                            android:backgroundTint="@color/yellow"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+                </ScrollView>
+
+            </FrameLayout>
+
+            <!-- ABA 2: Alertas -->
+            <LinearLayout
+                android:id="@+id/tab_alerts"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/editTextDefaultThreshold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Dias alerta padrão"
+                        android:inputType="number"/>
+
+                    <Button
+                        android:id="@+id/buttonSaveDefaultThreshold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Salvar"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/yellow"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/switchAlerts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mostrar alertas na Tela Principal"
+                    android:layout_marginTop="12dp"/>
+
+                <ListView
+                    android:id="@+id/listViewAlerts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>
